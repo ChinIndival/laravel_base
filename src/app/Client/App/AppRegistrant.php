@@ -3,6 +3,7 @@ namespace App\Client\App;
 
 use App\Common\App\Contract\AppRegistrant as AppRegistrantContract;
 use App\Common\Sample\Provider\ServiceProvider as SampleServiceProvider;
+use App\Common\Post\Provider\ServiceProvider as PostServiceProvider;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +27,8 @@ class AppRegistrant implements AppRegistrantContract
      * @var array
      */
     private $providers = [
-        SampleServiceProvider::class
+        SampleServiceProvider::class,
+        PostServiceProvider::class,
     ];
 
     /**
