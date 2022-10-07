@@ -37,6 +37,16 @@ Route::middleware('auth')->name('client.')->group(function () {
         Route::get('/', 'HomeController@index')->name('home.index');
     });
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    // Post
+    //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Route::namespace('App\Client\Post\Controller')->group(function () {
+        Route::resource('post', 'PostController');
+        Route::post('post/create', 'PostController@create')->name('post.create');
+        Route::put('post/{post}/edit', 'PostController@edit')->name('post.edit');
+        Route::match(['get', 'post'],'post/create/confirm', 'PostController@createConfirm')->name('post.createConfirm');
+        Route::match(['get', 'post'],'post/update/confirm', 'PostController@updateConfirm')->name('post.updateConfirm');
+    });
+    //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     // Sample
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     Route::namespace('App\Client\Sample\Controller')->prefix('sample')->group(function () {
